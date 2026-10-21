@@ -950,3 +950,169 @@ export const LEGAL_PAGES = {
   },
 };
 
+// ─── Careers Page ─────────────────────────────────────────────────────────────
+export const CAREERS_CONTENT = {
+  header: {
+    badge: "Join the Team",
+    title: "Help us build the future of hiring.",
+    subtitle:
+      "We're a small, ambitious team of engineers and designers who believe AI can make recruitment fairer, faster, and more human — not less. Come build with us.",
+  },
+  mission: {
+    title: "Our Mission",
+    body: "We're building AI that gives every candidate a fair shot and every company a clearer signal. If you care deeply about fairness, engineering rigor, and building tools that actually get used — we want to talk.",
+  },
+  values: [
+    {
+      emoji: "🔬",
+      title: "Engineering Rigor",
+      description:
+        "We care about correctness, test coverage, and systems that hold up under real-world pressure — not demos that break at 10 users.",
+    },
+    {
+      emoji: "⚖️",
+      title: "Fairness First",
+      description:
+        "Our AI pipeline is designed with explicit bias benchmarks. We debate evaluation rubrics, not just click-through rates.",
+    },
+    {
+      emoji: "🚢",
+      title: "Ship Fast, Learn Faster",
+      description:
+        "We run as a lean team. Your work ships quickly, you see the impact, and you iterate. No 6-month approval cycles.",
+    },
+    {
+      emoji: "🤝",
+      title: "Humans in the Loop",
+      description:
+        "We build AI decision-support tools — not autonomous agents that fire people. Recruiters and hiring managers remain in control.",
+    },
+  ],
+  openings: [
+    {
+      id: "fullstack-engineer",
+      title: "Full-Stack Engineer",
+      type: "Full-time · Remote",
+      department: "Engineering",
+      description:
+        "Build features across our Next.js frontend and Node.js backend. Own end-to-end delivery of recruiting pipeline features — from the Kanban board to the voice interview flow.",
+      requirements: [
+        "3+ years with React / Next.js (App Router)",
+        "Strong TypeScript skills",
+        "Experience with REST APIs and PostgreSQL or similar",
+        "Care about accessibility and performance",
+      ],
+    },
+    {
+      id: "ml-engineer",
+      title: "ML / LLM Engineer",
+      type: "Full-time · Remote",
+      department: "AI & ML",
+      description:
+        "Own our LLM orchestration pipeline — from resume semantic matching to per-question rubric scoring and adaptive follow-up generation.",
+      requirements: [
+        "Experience prompting or fine-tuning LLMs (OpenAI, Anthropic, or open-source)",
+        "Familiarity with RAG patterns and embedding stores",
+        "Python proficiency with FastAPI or similar",
+        "Understanding of bias detection in NLP outputs",
+      ],
+    },
+    {
+      id: "product-designer",
+      title: "Product Designer",
+      type: "Part-time / Contract · Remote",
+      department: "Design",
+      description:
+        "Design the recruiter dashboard, candidate interview UI, and scorecard experience. We care deeply about clarity, accessibility, and making complex AI outputs readable.",
+      requirements: [
+        "Portfolio showcasing web product design",
+        "Figma expertise",
+        "Experience designing data-heavy dashboards",
+        "Interest in AI and ethical product design",
+      ],
+    },
+  ],
+  noRoleCta: {
+    title: "Don't see your role?",
+    body: "We're always interested in exceptional people. Send us a note — tell us what you'd build here.",
+    email: "hirelytics.ai@gmail.com",
+  },
+  perks: [
+    { emoji: "🌍", label: "Fully remote" },
+    { emoji: "🎓", label: "Learning budget" },
+    { emoji: "🚀", label: "Early-stage equity" },
+    { emoji: "🕐", label: "Flexible hours" },
+    { emoji: "🤖", label: "AI tools covered" },
+    { emoji: "📣", label: "Real ownership" },
+  ],
+};
+
+// ─── Contact Page ─────────────────────────────────────────────────────────────
+export const CONTACT_CONTENT = {
+  header: {
+    badge: "Get in Touch",
+    title: "We'd love to hear from you.",
+    subtitle:
+      "Whether you're a recruiter evaluating Hirelytics, a candidate with a question, or a developer interested in joining us — reach out and we'll respond within one business day.",
+  },
+  channels: [
+    {
+      icon: "Mail",
+      title: "General Enquiries",
+      description: "Questions about the platform, pricing, or early access.",
+      contact: "hirelytics.ai@gmail.com",
+      href: "mailto:hirelytics.ai@gmail.com",
+      cta: "Send an email",
+    },
+    {
+      icon: "Briefcase",
+      title: "Demo Requests",
+      description: "Book a live 30-minute walkthrough with the team.",
+      contact: "Schedule via our booking page",
+      href: "/book-demo",
+      cta: "Book a demo",
+    },
+    {
+      icon: "Shield",
+      title: "Security & Privacy",
+      description: "Report vulnerabilities or request data deletion.",
+      contact: "hirelytics.ai@gmail.com",
+      href: "mailto:hirelytics.ai@gmail.com",
+      cta: "Contact security team",
+    },
+    {
+      icon: "Users",
+      title: "Careers",
+      description: "Interested in joining the team? We'd love to chat.",
+      contact: "See open roles",
+      href: "/careers",
+      cta: "View openings",
+    },
+  ],
+  social: [
+    {
+      label: "LinkedIn",
+      handle: "@hirelytics-ai",
+      href: "https://www.linkedin.com/company/hirelytics-ai",
+    },
+    {
+      label: "Twitter / X",
+      handle: "@hireleticsai",
+      href: "https://twitter.com/hireleticsai",
+    },
+  ],
+  faq: [
+    {
+      q: "How quickly do you respond?",
+      a: "We aim to reply to all enquiries within one business day. Demo requests are typically acknowledged within a few hours.",
+    },
+    {
+      q: "I'm a candidate — who do I contact?",
+      a: "Candidates are screened on behalf of the hiring company. For questions about your application status, please contact the company you applied to. For platform concerns or data requests, email us directly.",
+    },
+    {
+      q: "Do you offer a free trial?",
+      a: "Yes — our early-access pilot is free with a limited number of seats. Book a demo and we'll walk you through the setup.",
+    },
+  ],
+};

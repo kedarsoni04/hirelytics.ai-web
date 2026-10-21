@@ -28,6 +28,7 @@ export default function PricingPage() {
           title={header.title}
           subtitle={header.subtitle}
           breadcrumbs={[{ label: "Pricing" }]}
+
         />
 
         {/* ── 3 Plans Grid ── */}
@@ -37,110 +38,103 @@ export default function PricingPage() {
               {plans.map((plan, i) => (
                 <Reveal key={plan.id} delay={i * 0.12} direction="up" className="flex">
                   <div
-                    className={`rounded-2xl p-8 flex flex-col justify-between transition-all duration-300 relative w-full card-hover-glow ${
-                      plan.highlighted
+                    className={`rounded-2xl p-8 flex flex-col justify-between transition-all duration-300 relative w-full card-hover-glow ${plan.highlighted
                         ? "bg-[#04135B] text-white shadow-2xl ring-2 ring-[#02B9FE] scale-[1.02] hover:scale-[1.03]"
                         : "bg-[#F6F8FF] border border-[#E3E8F7] text-[#0B1250] hover:scale-[1.01]"
-                    }`}
+                      }`}
                   >
-                  {plan.badge && (
-                    <div
-                      className={`absolute -top-3.5 left-1/2 -translate-x-1/2 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider ${
-                        plan.highlighted
-                          ? "bg-gradient-to-r from-[#02B9FE] to-[#694EFE] text-white"
-                          : "bg-[#2F70FE] text-white"
-                      }`}
-                    >
-                      {plan.badge}
-                    </div>
-                  )}
+                    {plan.badge && (
+                      <div
+                        className={`absolute -top-3.5 left-1/2 -translate-x-1/2 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider ${plan.highlighted
+                            ? "bg-gradient-to-r from-[#02B9FE] to-[#694EFE] text-white"
+                            : "bg-[#2F70FE] text-white"
+                          }`}
+                      >
+                        {plan.badge}
+                      </div>
+                    )}
 
-                  <div>
-                    <h2
-                      className={`text-xl font-bold mb-2 ${
-                        plan.highlighted ? "text-white" : "text-[#0B1250]"
-                      }`}
-                    >
-                      {plan.name}
-                    </h2>
-                    <p
-                      className={`text-xs mb-6 leading-relaxed ${
-                        plan.highlighted ? "text-white/70" : "text-[#4B5578]"
-                      }`}
-                    >
-                      {plan.description}
-                    </p>
+                    <div>
+                      <h2
+                        className={`text-xl font-bold mb-2 ${plan.highlighted ? "text-white" : "text-[#0B1250]"
+                          }`}
+                      >
+                        {plan.name}
+                      </h2>
+                      <p
+                        className={`text-xs mb-6 leading-relaxed ${plan.highlighted ? "text-white/70" : "text-[#4B5578]"
+                          }`}
+                      >
+                        {plan.description}
+                      </p>
 
-                    {/* Price display */}
-                    <div className="mb-6 pb-6 border-b border-current/10">
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-                          {plan.price}
+                      {/* Price display */}
+                      <div className="mb-6 pb-6 border-b border-current/10">
+                        <div className="flex items-baseline gap-2">
+                          <span className="text-3xl sm:text-4xl font-extrabold tracking-tight">
+                            {plan.price}
+                          </span>
+                        </div>
+                        <span
+                          className={`text-xs ${plan.highlighted ? "text-white/60" : "text-[#4B5578]"
+                            }`}
+                        >
+                          {plan.period}
                         </span>
                       </div>
-                      <span
-                        className={`text-xs ${
-                          plan.highlighted ? "text-white/60" : "text-[#4B5578]"
-                        }`}
-                      >
-                        {plan.period}
-                      </span>
+
+                      {/* Feature list */}
+                      <ul className="flex flex-col gap-3 mb-8">
+                        {plan.features.map((feat) => (
+                          <li key={feat} className="flex items-start gap-2.5 text-xs sm:text-sm">
+                            <Check
+                              size={16}
+                              className={`shrink-0 mt-0.5 ${plan.highlighted ? "text-[#02B9FE]" : "text-[#2F70FE]"
+                                }`}
+                            />
+                            <span
+                              className={plan.highlighted ? "text-white/90" : "text-[#0B1250]"}
+                            >
+                              {feat}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
 
-                    {/* Feature list */}
-                    <ul className="flex flex-col gap-3 mb-8">
-                      {plan.features.map((feat) => (
-                        <li key={feat} className="flex items-start gap-2.5 text-xs sm:text-sm">
-                          <Check
-                            size={16}
-                            className={`shrink-0 mt-0.5 ${
-                              plan.highlighted ? "text-[#02B9FE]" : "text-[#2F70FE]"
-                            }`}
-                          />
-                          <span
-                            className={plan.highlighted ? "text-white/90" : "text-[#0B1250]"}
-                          >
-                            {feat}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
+                    {/* CTA */}
+                    <Link
+                      href={plan.href}
+                      className={`w-full py-3 px-4 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition-all ${plan.highlighted
+                          ? "btn-gradient"
+                          : "bg-white border border-[#E3E8F7] hover:border-[#2F70FE] text-[#0B1250] shadow-sm hover:shadow"
+                        }`}
+                    >
+                      {plan.cta}
+                      <ArrowRight size={14} />
+                    </Link>
                   </div>
-
-                  {/* CTA */}
-                  <Link
-                    href={plan.href}
-                    className={`w-full py-3 px-4 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition-all ${
-                      plan.highlighted
-                        ? "btn-gradient"
-                        : "bg-white border border-[#E3E8F7] hover:border-[#2F70FE] text-[#0B1250] shadow-sm hover:shadow"
-                    }`}
-                  >
-                    {plan.cta}
-                    <ArrowRight size={14} />
-                  </Link>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── Feature Comparison Table ── */}
-      <section
-        className="section-padding bg-[#F6F8FF] border-t border-[#E3E8F7]"
-        aria-label="Feature Comparison Table"
-      >
-        <div className="container-xl max-w-5xl">
-          <Reveal direction="up" className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B1250]">
-              {comparison.title}
-            </h2>
-            <p className="text-sm text-[#4B5578] mt-2">{comparison.subtitle}</p>
-          </Reveal>
+        {/* ── Feature Comparison Table ── */}
+        <section
+          className="section-padding bg-[#F6F8FF] border-t border-[#E3E8F7]"
+          aria-label="Feature Comparison Table"
+        >
+          <div className="container-xl max-w-5xl">
+            <Reveal direction="up" className="text-center max-w-2xl mx-auto mb-12">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B1250]">
+                {comparison.title}
+              </h2>
+              <p className="text-sm text-[#4B5578] mt-2">{comparison.subtitle}</p>
+            </Reveal>
 
-          <Reveal direction="up" delay={0.15} className="bg-white rounded-2xl border border-[#E3E8F7] shadow-sm overflow-hidden">
-            <div className="overflow-x-auto">
+            <Reveal direction="up" delay={0.15} className="bg-white rounded-2xl border border-[#E3E8F7] shadow-sm overflow-hidden">
+              <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-[#04135B] text-white text-xs uppercase tracking-wider">
