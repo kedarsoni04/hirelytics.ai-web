@@ -46,7 +46,7 @@ export default function ScorecardMockup() {
   return (
     <div
       ref={ref}
-      className="relative bg-[#07156A] rounded-2xl border border-white/10 p-6 shadow-2xl max-w-sm w-full mx-auto"
+      className="relative bg-[#07156A] rounded-2xl border border-white/10 p-6 shadow-2xl max-w-sm w-full mx-auto animate-float transition-all duration-300 hover:shadow-[0_20px_50px_rgba(47,112,254,0.25)]"
       role="img"
       aria-label="Sample scorecard mockup showing overall score and four pillar scores"
     >

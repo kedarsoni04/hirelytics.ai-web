@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import FeatureMockup from "@/components/FeatureMockup";
+import Reveal from "@/components/Reveal";
 import { PRODUCT_TOUR, SITE } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -36,9 +37,10 @@ export default function ProductPage() {
             {roles.map((roleSection, idx) => {
               const isEven = idx % 2 === 1;
               return (
-                <div
+                <Reveal
                   key={roleSection.id}
-                  id={roleSection.id}
+                  direction="up"
+                  delay={0.1}
                   className="scroll-mt-24 grid lg:grid-cols-12 gap-12 items-center"
                 >
                   <div
@@ -80,7 +82,7 @@ export default function ProductPage() {
                   >
                     <FeatureMockup type={roleSection.mockupType} />
                   </div>
-                </div>
+                </Reveal>
               );
             })}
           </div>
@@ -92,7 +94,7 @@ export default function ProductPage() {
           aria-label="Product Roadmap"
         >
           <div className="container-xl">
-            <div className="text-center max-w-2xl mx-auto mb-16">
+            <Reveal direction="up" className="text-center max-w-2xl mx-auto mb-16">
               <span className="inline-block text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-white border border-[#E3E8F7] text-[#2F70FE] mb-3">
                 {roadmap.badge}
               </span>
@@ -100,14 +102,14 @@ export default function ProductPage() {
                 {roadmap.title}
               </h2>
               <p className="text-[#4B5578] mt-3">{roadmap.subtitle}</p>
-            </div>
+            </Reveal>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {roadmap.items.map((item) => (
-                <div
-                  key={item.title}
-                  className="bg-white rounded-2xl border border-[#E3E8F7] p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
-                >
+              {roadmap.items.map((item, i) => (
+                <Reveal key={item.title} delay={i * 0.1} direction="up" className="flex">
+                  <div
+                    className="bg-white rounded-2xl border border-[#E3E8F7] p-6 shadow-sm flex flex-col justify-between w-full card-hover-glow"
+                  >
                   <div>
                     <div className="flex items-center justify-between mb-4">
                       <span className="text-xs font-bold text-[#2F70FE] bg-[#F6F8FF] px-2.5 py-1 rounded-lg border border-[#E3E8F7]">
@@ -122,7 +124,8 @@ export default function ProductPage() {
                     <p className="text-xs text-[#4B5578] leading-relaxed">{item.description}</p>
                   </div>
                 </div>
-              ))}
+              </Reveal>
+            ))}
             </div>
 
             {/* Bottom CTA */}

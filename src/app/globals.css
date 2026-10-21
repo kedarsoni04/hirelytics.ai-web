@@ -209,6 +209,86 @@ body {
     rgba(45, 47, 242, 0.35) 0%,
     transparent 70%
   );
+  animation: pulse-glow 7s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+/* ── Smooth Floating Animations ──────────────────────────────────────────── */
+@keyframes float-smooth {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+.animate-float {
+  animation: float-smooth 5s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 6s ease-in-out infinite;
+}
+
+/* ── Audio Waveform Animation ────────────────────────────────────────────── */
+@keyframes waveform-bounce {
+  0%, 100% {
+    transform: scaleY(0.4);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.animate-waveform {
+  transform-origin: bottom;
+  animation: waveform-bounce 1.1s ease-in-out infinite alternate;
+}
+
+/* ── Shimmer & Sheen Effect ──────────────────────────────────────────────── */
+@keyframes shimmer-sweep {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.badge-shimmer {
+  background-size: 200% 100%;
+  animation: shimmer-sweep 4s linear infinite;
+}
+
+/* ── Enhanced Card Hover Glow ────────────────────────────────────────────── */
+.card-hover-glow {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+}
+
+.card-hover-glow:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px -8px rgba(47, 112, 254, 0.18);
+  border-color: rgba(47, 112, 254, 0.35);
 }
 
 /* ── Scorecard ring animation ────────────────────────────────────────────── */
@@ -244,10 +324,19 @@ body {
 details > summary {
   list-style: none;
   cursor: pointer;
+  transition: color 0.15s ease;
 }
 
 details > summary::-webkit-details-marker {
   display: none;
+}
+
+details[open] summary svg {
+  transform: rotate(180deg);
+}
+
+details summary svg {
+  transition: transform 0.2s ease;
 }
 
 /* ── Scrollbar (WebKit) ───────────────────────────────────────────────────── */
@@ -263,3 +352,4 @@ details > summary::-webkit-details-marker {
   background: rgba(4, 19, 91, 0.18);
   border-radius: 9999px;
 }
+

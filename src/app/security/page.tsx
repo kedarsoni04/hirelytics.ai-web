@@ -13,6 +13,7 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
+import Reveal from "@/components/Reveal";
 import { SECURITY_CONTENT, SITE } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -43,7 +44,7 @@ export default function SecurityPage() {
         {/* ── Security Architecture Pillars ── */}
         <section className="section-padding bg-white" aria-label="Security Controls">
           <div className="container-xl">
-            <div className="text-center max-w-2xl mx-auto mb-16">
+            <Reveal direction="up" className="text-center max-w-2xl mx-auto mb-16">
               <span className="inline-block text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-[#F6F8FF] border border-[#E3E8F7] text-[#2F70FE] mb-3">
                 Security Architecture
               </span>
@@ -53,16 +54,16 @@ export default function SecurityPage() {
               <p className="text-[#4B5578] mt-2 text-sm">
                 Engineering safeguards protecting your candidates, audio transcripts, and organizational workspaces.
               </p>
-            </div>
+            </Reveal>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {pillars.map((pillar, i) => {
                 const IconComponent = pillarIcons[i % pillarIcons.length];
                 return (
-                  <div
-                    key={pillar.title}
-                    className="p-6 rounded-2xl bg-[#F6F8FF] border border-[#E3E8F7] hover:border-[#2F70FE]/30 transition-all flex flex-col justify-between"
-                  >
+                  <Reveal key={pillar.title} delay={i * 0.1} direction="up" className="flex">
+                    <div
+                      className="p-6 rounded-2xl bg-[#F6F8FF] border border-[#E3E8F7] card-hover-glow flex flex-col justify-between w-full"
+                    >
                     <div>
                       <div className="flex items-center justify-between mb-4">
                         <div className="w-10 h-10 rounded-xl bg-white border border-[#E3E8F7] flex items-center justify-center text-[#2F70FE]">
@@ -76,8 +77,9 @@ export default function SecurityPage() {
                       <p className="text-xs sm:text-sm text-[#4B5578] leading-relaxed">
                         {pillar.description}
                       </p>
+                      </div>
                     </div>
-                  </div>
+                  </Reveal>
                 );
               })}
             </div>
@@ -90,7 +92,7 @@ export default function SecurityPage() {
           aria-label="Responsible AI Principles"
         >
           <div className="container-xl max-w-5xl">
-            <div className="text-center max-w-2xl mx-auto mb-16">
+            <Reveal direction="up" className="text-center max-w-2xl mx-auto mb-16">
               <span className="inline-block text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-white border border-[#E3E8F7] text-[#694EFE] mb-3">
                 Ethical Benchmarks
               </span>
@@ -98,22 +100,25 @@ export default function SecurityPage() {
                 {responsibleAi.title}
               </h2>
               <p className="text-[#4B5578] mt-2 text-sm">{responsibleAi.subtitle}</p>
-            </div>
+            </Reveal>
 
             <div className="grid sm:grid-cols-2 gap-6">
-              {responsibleAi.principles.map((principle) => (
-                <div
-                  key={principle.title}
-                  className="bg-white rounded-2xl border border-[#E3E8F7] p-6 shadow-sm"
-                >
-                  <h3 className="text-base font-bold text-[#0B1250] mb-2 flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-[#02B9FE]" />
-                    {principle.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-[#4B5578] leading-relaxed">
-                    {principle.description}
-                  </p>
-                </div>
+              {responsibleAi.principles.map((principle, i) => (
+                <Reveal key={principle.title} delay={i * 0.08} direction="up" className="flex">
+                  <div
+                    className="bg-white rounded-2xl border border-[#E3E8F7] p-6 shadow-sm card-hover-glow w-full flex flex-col justify-between"
+                  >
+                    <div>
+                      <h3 className="text-base font-bold text-[#0B1250] mb-2 flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-[#02B9FE]" />
+                        {principle.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-[#4B5578] leading-relaxed">
+                        {principle.description}
+                      </p>
+                    </div>
+                  </div>
+                </Reveal>
               ))}
             </div>
           </div>

@@ -66,7 +66,7 @@ export const HOW_IT_WORKS = {
     {
       number: "04",
       title: "AI voice interview",
-      body: "Hirelytics asks job-specific questions, transcribes answers with Whisper, and analyses depth and clarity.",
+      body: "Candidates complete a consent screen before the interview. Answers are scored against per-question rubrics with evidence quotes from their own words, with adaptive follow-ups and delivery insights; candidates never see scores.",
     },
     {
       number: "05",
@@ -94,12 +94,14 @@ export const FEATURES = [
   {
     id: "ai-interviews",
     label: "AI Voice Interviews",
-    heading: "Job-specific interview questions — generated from your JD and the candidate's resume.",
-    body: "Every candidate gets a tailored interview. Questions are generated from the actual job description and the specific resume, then voice answers are transcribed automatically by Whisper.",
+    heading: "Tailored AI voice interviews with per-question rubrics and adaptive follow-ups.",
+    body: "Each interview question is generated with a rubric of key points, and answers are scored against it with an evidence quote from the candidate's own words. When a technical answer is vague, the AI asks an adaptive follow-up (limited per interview), while capturing delivery insights and integrity signals for human review.",
     bullets: [
-      "Questions vary per candidate and per role",
-      "Voice answers transcribed automatically",
-      "Soft-skill depth and technical clarity analysed by AI",
+      "Per-question rubrics scored with candidate evidence quotes from their own words",
+      "Adaptive follow-ups when a technical answer is vague (limited per interview)",
+      "Delivery insights: pace, pauses, and approximate filler words (informational and lightly weighted)",
+      "Integrity signals (tab switches and focus loss) flagged for human review — signals, not proof of misconduct",
+      "Candidate consent screen before the interview; candidates never see their scores",
     ],
     mockupType: "interview" as const,
     flip: true,
@@ -139,22 +141,22 @@ export const RESPONSIBLE_AI = {
     {
       icon: "UserCheck",
       title: "Humans make the final call",
-      body: "Hirelytics surfaces and ranks. Your team reviews and chooses. AI never decides alone.",
+      body: "Hirelytics surfaces diagnostic signals and scores. Your team reviews the full transcript, rubric evidence, and chooses. AI never decides alone.",
     },
     {
-      icon: "Eye",
-      title: "No facial or biometric analysis",
-      body: "We analyse voice transcripts for content and clarity — never appearance, age, gender, or ethnicity.",
+      icon: "Shield",
+      title: "Candidate consent & score privacy",
+      body: "Candidates review a transparent consent screen before the interview begins. Candidates never see their scores or internal evaluation scorecards.",
     },
     {
       icon: "Lightbulb",
-      title: "Every score is explainable",
-      body: "Each pillar score comes with a written AI rationale so candidates and hiring teams understand the reasoning.",
+      title: "Per-question rubrics & evidence",
+      body: "Each question generates a rubric of key points, and answers are scored against it with verbatim evidence quotes from the candidate's own words.",
     },
     {
-      icon: "Lock",
-      title: "Your data stays yours",
-      body: "Each company's data is tenant-isolated. We do not train shared models on your candidates.",
+      icon: "Eye",
+      title: "Integrity signals, not proof",
+      body: "Tab switches and focus loss are flagged for human review. These are provided as signals, not proof of misconduct.",
     },
   ],
 };
@@ -227,8 +229,9 @@ export const PRICING_TEASER = {
       features: [
         "Everything in Growth",
         "Dedicated account manager",
-        "Custom integrations (roadmap)",
-        "SSO (roadmap)",
+        "ATS & HRIS integrations (coming soon)",
+        "SSO & SAML (coming soon)",
+        "Calendar scheduling (coming soon)",
         "SLA guarantees",
         "Custom onboarding",
       ],
@@ -246,27 +249,27 @@ export const FAQ = {
   items: [
     {
       q: "Is Hirelytics an ATS?",
-      a: "Hirelytics is an AI-powered hiring intelligence platform, not a traditional ATS. It focuses on evaluation quality — resume screening, AI voice interviews, and explainable scorecards. A Kanban pipeline is included, but full HRIS integrations are on the roadmap.",
+      a: "Hirelytics is an AI-powered hiring intelligence platform, not a traditional ATS. It focuses on evaluation quality — resume screening, AI voice interviews with per-question rubrics, and explainable scorecards. A Kanban pipeline is included, while ATS/HRIS integrations and calendar scheduling are coming soon on the roadmap.",
     },
     {
       q: "How are scores calculated?",
-      a: "Each candidate receives scores across four pillars: Job Match (LLM semantic comparison), Programming Skills (auto-graded assessment), Soft Skills (AI analysis of transcribed voice answers), and Technical Interview (AI analysis of depth and clarity). A configurable weighted formula produces the overall score.",
+      a: "Each candidate receives scores across four pillars: Job Match (LLM semantic comparison), Programming Skills (auto-graded assessment), Soft Skills (informational delivery insights and communication clarity), and Technical Interview (per-question rubrics scored with candidate evidence quotes). A configurable weighted formula produces the overall score.",
     },
     {
       q: "Does a human make the hiring decision?",
-      a: "Always. Hirelytics ranks and surfaces candidates; your team reviews the scorecards, reads the AI rationales, and decides who to advance or hire. We are a decision-support tool, not a decision-maker.",
+      a: "Always. Hirelytics ranks and surfaces candidates alongside objective rubric evidence; your team reviews the scorecards, reads the AI rationales and candidate evidence quotes, and decides who to advance or hire. Integrity signals like tab switches are flagged for human review as signals, not proof of misconduct.",
     },
     {
       q: "What data do you store, and for how long?",
-      a: "We store resume text, assessment answers, voice transcripts, and AI-generated scores. All data is tenant-isolated per company. Retention periods are configurable, and candidates can request deletion in line with applicable data protection law.",
+      a: "We store resume text, assessment answers, voice transcripts, and AI-generated scores. All data is tenant-isolated per company. Candidates complete a consent screen before the interview and never see their scores or internal evaluation scorecards. Retention periods are configurable in line with applicable privacy laws.",
     },
     {
       q: "Can we customise the interview questions?",
-      a: "The AI generates questions from your job description and the candidate's resume. Today you can review and edit generated questions before the interview goes live. Fully custom question banks and adaptive follow-up questions are on the roadmap.",
+      a: "The AI generates questions tailored to your job description and candidate resume, each backed by a rubric of key points. Adaptive follow-ups are live to probe vague technical answers (limited per interview). Fully custom question bank builders remain on the roadmap.",
     },
     {
       q: "Which roles does Hirelytics suit best?",
-      a: "Any role where a structured, repeatable evaluation process adds value — tech, finance, sales, operations, and more. The voice interview and soft-skill analysis are particularly useful for client-facing or communication-heavy roles.",
+      a: "Any role where a structured, repeatable evaluation process adds value — tech, finance, sales, operations, and more. The voice interview, rubric scoring, and delivery insights are particularly useful for technical and communication-heavy roles.",
     },
     {
       q: "How long does it take to get started?",
@@ -274,7 +277,7 @@ export const FAQ = {
     },
     {
       q: "Do you integrate with our existing tools?",
-      a: "Not yet. Integrations with popular ATS and HRIS platforms (Greenhouse, Lever, Workday, etc.) and calendar scheduling tools are on our public roadmap. If an integration is critical for you, let us know — it helps us prioritise.",
+      a: "ATS/HRIS integrations (Greenhouse, Lever, Workday), calendar scheduling, SSO, and shared cross-company assessments are coming soon on our public roadmap. If a specific integration is critical for you, let us know — it helps us prioritise.",
     },
   ],
 };
@@ -329,7 +332,7 @@ export const PRODUCT_TOUR = {
     {
       id: "recruiters",
       role: "Company Recruiters",
-      tagline: "Cut screening hours to minutes with explainable AI evaluations.",
+      tagline: "Structured evaluations with objective rubrics and human decision authority.",
       mockupType: "resume" as const,
       features: [
         {
@@ -338,9 +341,24 @@ export const PRODUCT_TOUR = {
             "Evaluates candidate depth, skill seniority, and relevance directly against your job description without relying on superficial keywords.",
         },
         {
-          title: "Automated Voice Interviewing",
+          title: "Per-Question Rubrics & Evidence Quotes",
           description:
-            "Conducts tailored conversational interviews on-demand, transcribing answers with Whisper and evaluating communication and domain knowledge.",
+            "Each interview question is generated with a rubric of key points. Answers are scored against it with an evidence quote from the candidate's own words.",
+        },
+        {
+          title: "Adaptive Follow-Ups",
+          description:
+            "When a technical answer is vague, the AI asks an adaptive follow-up (limited per interview) to allow the candidate to clarify.",
+        },
+        {
+          title: "Informational Delivery Insights",
+          description:
+            "Pace, pauses, and approximate filler words are displayed as informational insights that are only lightly weighted.",
+        },
+        {
+          title: "Integrity Signals for Review",
+          description:
+            "Tab switches and focus loss are flagged for human review. These are evaluated as signals, not proof of misconduct.",
         },
         {
           title: "Four-Pillar Explainable Scorecard",
@@ -361,9 +379,14 @@ export const PRODUCT_TOUR = {
       mockupType: "interview" as const,
       features: [
         {
-          title: "Tailored, Role-Specific Questions",
+          title: "Candidate Consent & Score Privacy",
           description:
-            "No generic trick puzzles. Questions directly reflect your real skills, past achievements, and the target role requirements.",
+            "Candidates review and confirm a clear consent screen before the interview begins. Candidates never see their scores or internal evaluation scorecards.",
+        },
+        {
+          title: "Tailored Questions & Adaptive Follow-Ups",
+          description:
+            "Questions reflect your real experience and target role requirements. If an answer needs technical clarification, the AI asks a structured follow-up.",
         },
         {
           title: "Zero Biometric Bias",
@@ -418,7 +441,7 @@ export const PRODUCT_TOUR = {
       "We are actively shipping new capabilities to deepen automation, integrations, and candidate engagement.",
     items: [
       {
-        quarter: "Q1 2026",
+        quarter: "Q2 2026",
         title: "ATS & HRIS Integrations",
         description:
           "Two-way synchronization with Greenhouse, Lever, and Workday to import job postings and push evaluated candidates seamlessly.",
@@ -426,16 +449,16 @@ export const PRODUCT_TOUR = {
       },
       {
         quarter: "Q2 2026",
-        title: "Adaptive Voice Follow-Ups",
+        title: "Shared Cross-Company Assessments",
         description:
-          "Dynamic AI follow-up questions that delve deeper into technical explanations based on the candidate's live answer.",
+          "Standardized, verified technical assessments that candidates can take once and share across participating employers.",
         status: "Planned",
       },
       {
-        quarter: "Q2 2026",
-        title: "Custom Question Bank Builder",
+        quarter: "Q3 2026",
+        title: "Calendar Scheduling",
         description:
-          "Create and organize company-specific evaluation templates, rubric benchmarks, and proprietary technical prompts.",
+          "Direct recruiter and hiring team calendar synchronization with Google Calendar and Microsoft Outlook for post-interview debriefs.",
         status: "Planned",
       },
       {
@@ -443,13 +466,6 @@ export const PRODUCT_TOUR = {
         title: "Enterprise SSO & SAML",
         description:
           "Single sign-on integration with Okta, Azure AD, and Google Workspace for unified enterprise identity management.",
-        status: "Roadmap",
-      },
-      {
-        quarter: "Q3 2026",
-        title: "Multilingual Voice Interviews",
-        description:
-          "Support for global hiring with multi-language voice transcription and native language competency assessment.",
         status: "Roadmap",
       },
     ],
@@ -494,12 +510,12 @@ export const HOW_IT_WORKS_TIMELINE = {
     },
     {
       step: "04",
-      name: "AI Voice Interview & Whisper Transcription",
-      summary: "Conduct conversational, job-specific interviews without recruiter scheduling bottlenecks.",
+      name: "AI Voice Interview, Rubrics & Adaptive Follow-Ups",
+      summary: "Tailored voice interviews with per-question rubrics, adaptive follow-ups, and candidate consent.",
       aiRole:
-        "Asks tailored questions derived from the candidate's resume and JD. Transcribes audio via Whisper and evaluates response depth, clarity, and domain reasoning.",
+        "Displays a candidate consent screen before starting (candidates never see their scores). Each question generates a rubric of key points, scoring answers alongside evidence quotes from the candidate's own words. When a technical answer is vague, asks an adaptive follow-up (limited per interview). Captures delivery insights on pace, pauses, and approximate filler counts (informational and lightly weighted), and flags integrity signals (tab switches and focus loss) for human review.",
       humanRole:
-        "Inspects verbatim transcripts, plays back audio highlights, and validates communication nuances directly.",
+        "Inspects verbatim transcripts, audio playback, rubric evidence quotes, and delivery insights. Reviews flagged integrity signals as signals for review, not proof of misconduct, and retains full hiring authority.",
     },
     {
       step: "05",
@@ -595,8 +611,9 @@ export const PRICING_CONTENT = {
       features: [
         "Everything in Growth",
         "Dedicated account manager",
-        "Custom ATS integrations (on roadmap)",
-        "Enterprise SSO / SAML (on roadmap)",
+        "ATS & HRIS integrations (coming soon)",
+        "Enterprise SSO / SAML (coming soon)",
+        "Calendar scheduling (coming soon)",
         "Custom SLA & uptime guarantee",
         "Tailored evaluation rubrics",
       ],
@@ -613,30 +630,34 @@ export const PRICING_CONTENT = {
         category: "Evaluation & AI Intelligence",
         rows: [
           { feature: "Semantic resume matching", pilot: true, growth: true, enterprise: true },
-          { feature: "AI voice interviews", pilot: true, growth: true, enterprise: true },
-          { feature: "Whisper speech-to-text", pilot: true, growth: true, enterprise: true },
+          { feature: "AI voice interviews with Whisper", pilot: true, growth: true, enterprise: true },
+          { feature: "Per-question rubrics & evidence quotes", pilot: true, growth: true, enterprise: true },
+          { feature: "Adaptive follow-up questions", pilot: true, growth: true, enterprise: true },
+          { feature: "Delivery insights (pace, pauses, approx. fillers)", pilot: true, growth: true, enterprise: true },
+          { feature: "Integrity signals (tab switch/focus review)", pilot: true, growth: true, enterprise: true },
           { feature: "Four-pillar explainable scorecard", pilot: true, growth: true, enterprise: true },
-          { feature: "Customizable question bank", pilot: "Roadmap", growth: "Roadmap", enterprise: "Priority" },
-          { feature: "Tailored assessment weighting", pilot: "Basic", growth: "Full", enterprise: "Full" },
+          { feature: "Shared cross-company assessments", pilot: "Roadmap", growth: "Roadmap", enterprise: "Roadmap" },
         ],
       },
       {
         category: "Candidate Experience",
         rows: [
+          { feature: "Candidate consent screen & score privacy", pilot: true, growth: true, enterprise: true },
           { feature: "Zero biometric / facial scanning", pilot: true, growth: true, enterprise: true },
           { feature: "Async voice interview access", pilot: true, growth: true, enterprise: true },
           { feature: "Candidate status notifications", pilot: true, growth: true, enterprise: true },
-          { feature: "Multilingual interview support", pilot: "Roadmap", growth: "Roadmap", enterprise: "Roadmap" },
         ],
       },
       {
         category: "Collaboration & Security",
         rows: [
           { feature: "Kanban pipeline board", pilot: true, growth: true, enterprise: true },
+          { feature: "ATS & HRIS integrations", pilot: "Roadmap", growth: "Roadmap", enterprise: "Roadmap" },
+          { feature: "Calendar scheduling", pilot: "Roadmap", growth: "Roadmap", enterprise: "Roadmap" },
           { feature: "Multi-tenant data isolation", pilot: true, growth: true, enterprise: true },
           { feature: "bcrypt passwords & JWT sessions", pilot: true, growth: true, enterprise: true },
           { feature: "Role-based access control (RBAC)", pilot: "Standard", growth: "Advanced", enterprise: "Custom" },
-          { feature: "Single Sign-On (SSO / SAML)", pilot: false, growth: "Roadmap", enterprise: "Priority" },
+          { feature: "Single Sign-On (SSO / SAML)", pilot: "Roadmap", growth: "Roadmap", enterprise: "Priority" },
           { feature: "Audit trail logging", pilot: false, growth: true, enterprise: true },
         ],
       },
@@ -708,6 +729,31 @@ export const SECURITY_CONTENT = {
           "Hirelytics provides ranking and diagnostic insights, but a human recruiter or hiring manager always makes the final decision to advance, offer, or decline.",
       },
       {
+        title: "Candidate Consent & Score Privacy",
+        description:
+          "Candidates complete a transparent consent screen before the interview begins. Candidates never see their scores or internal evaluation scorecards.",
+      },
+      {
+        title: "Per-Question Rubrics & Evidence Quotes",
+        description:
+          "Each interview question is generated with an objective rubric of key points. Answers are scored against it with verbatim evidence quotes from the candidate's own words.",
+      },
+      {
+        title: "Adaptive Follow-Ups",
+        description:
+          "When a technical answer is vague, the AI asks a structured follow-up (strictly limited per interview) to allow the candidate to clarify.",
+      },
+      {
+        title: "Integrity Signals, Not Proof",
+        description:
+          "Tab switches and focus loss are flagged for human review. These are explicitly surfaced as signals, not proof of misconduct.",
+      },
+      {
+        title: "Informational Delivery Insights",
+        description:
+          "Pace, pauses, and approximate filler words are shown as informational metrics that are only lightly weighted, avoiding penalization of individual speech patterns.",
+      },
+      {
         title: "Zero Facial or Biometric Analysis",
         description:
           "We do not capture or analyze facial expressions, micro-movements, eye contact, gender, age, or ethnic characteristics. Only speech content and transcription clarity are evaluated.",
@@ -716,11 +762,6 @@ export const SECURITY_CONTENT = {
         title: "Objective Multi-Source Scoring",
         description:
           "Candidate scores are derived exclusively from verified inputs: resume content, standardized assessment results, and voice interview transcripts.",
-      },
-      {
-        title: "Explainable Rationales",
-        description:
-          "Every score includes written explanations highlighting specific strengths and gaps, banishing the black-box dilemma of legacy screening tools.",
       },
     ],
   },

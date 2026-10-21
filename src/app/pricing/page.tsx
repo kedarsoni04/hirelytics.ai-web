@@ -4,6 +4,7 @@ import { ArrowRight, Check, Minus } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
+import Reveal from "@/components/Reveal";
 import { PRICING_CONTENT } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -33,15 +34,15 @@ export default function PricingPage() {
         <section className="section-padding bg-white" aria-label="Pricing Plans">
           <div className="container-xl">
             <div className="grid md:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
-              {plans.map((plan) => (
-                <div
-                  key={plan.id}
-                  className={`rounded-2xl p-8 flex flex-col justify-between transition-all duration-200 relative ${
-                    plan.highlighted
-                      ? "bg-[#04135B] text-white shadow-2xl ring-2 ring-[#02B9FE] scale-[1.02]"
-                      : "bg-[#F6F8FF] border border-[#E3E8F7] text-[#0B1250]"
-                  }`}
-                >
+              {plans.map((plan, i) => (
+                <Reveal key={plan.id} delay={i * 0.12} direction="up" className="flex">
+                  <div
+                    className={`rounded-2xl p-8 flex flex-col justify-between transition-all duration-300 relative w-full card-hover-glow ${
+                      plan.highlighted
+                        ? "bg-[#04135B] text-white shadow-2xl ring-2 ring-[#02B9FE] scale-[1.02] hover:scale-[1.03]"
+                        : "bg-[#F6F8FF] border border-[#E3E8F7] text-[#0B1250] hover:scale-[1.01]"
+                    }`}
+                  >
                   {plan.badge && (
                     <div
                       className={`absolute -top-3.5 left-1/2 -translate-x-1/2 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider ${
@@ -119,26 +120,27 @@ export default function PricingPage() {
                     <ArrowRight size={14} />
                   </Link>
                 </div>
-              ))}
-            </div>
+              </Reveal>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ── Feature Comparison Table ── */}
-        <section
-          className="section-padding bg-[#F6F8FF] border-t border-[#E3E8F7]"
-          aria-label="Feature Comparison Table"
-        >
-          <div className="container-xl max-w-5xl">
-            <div className="text-center max-w-2xl mx-auto mb-12">
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B1250]">
-                {comparison.title}
-              </h2>
-              <p className="text-sm text-[#4B5578] mt-2">{comparison.subtitle}</p>
-            </div>
+      {/* ── Feature Comparison Table ── */}
+      <section
+        className="section-padding bg-[#F6F8FF] border-t border-[#E3E8F7]"
+        aria-label="Feature Comparison Table"
+      >
+        <div className="container-xl max-w-5xl">
+          <Reveal direction="up" className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B1250]">
+              {comparison.title}
+            </h2>
+            <p className="text-sm text-[#4B5578] mt-2">{comparison.subtitle}</p>
+          </Reveal>
 
-            <div className="bg-white rounded-2xl border border-[#E3E8F7] shadow-sm overflow-hidden">
-              <div className="overflow-x-auto">
+          <Reveal direction="up" delay={0.15} className="bg-white rounded-2xl border border-[#E3E8F7] shadow-sm overflow-hidden">
+            <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-[#04135B] text-white text-xs uppercase tracking-wider">
@@ -185,7 +187,7 @@ export default function PricingPage() {
                   </tbody>
                 </table>
               </div>
-            </div>
+            </Reveal>
           </div>
         </section>
       </main>

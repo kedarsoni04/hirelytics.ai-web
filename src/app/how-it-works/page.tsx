@@ -4,6 +4,7 @@ import { ArrowRight, Bot, UserCheck } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
+import Reveal from "@/components/Reveal";
 import { HOW_IT_WORKS_TIMELINE, SITE } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -33,15 +34,15 @@ export default function HowItWorksPage() {
           <div className="container-xl max-w-4xl">
             {/* Vertical timeline wrapper */}
             <div className="relative pl-6 sm:pl-10 border-l-2 border-[#E3E8F7] flex flex-col gap-12 sm:gap-16">
-              {stages.map((stage) => (
-                <div key={stage.step} className="relative">
+              {stages.map((stage, idx) => (
+                <Reveal key={stage.step} delay={idx * 0.08} direction="up" className="relative">
                   {/* Step node on the vertical line */}
-                  <div className="absolute -left-[35px] sm:-left-[51px] top-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-[#02B9FE] to-[#694EFE] text-white flex items-center justify-center font-bold text-xs sm:text-sm shadow-md">
+                  <div className="absolute -left-[35px] sm:-left-[51px] top-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-[#02B9FE] to-[#694EFE] text-white flex items-center justify-center font-bold text-xs sm:text-sm shadow-md transition-transform duration-300 hover:scale-110">
                     {stage.step}
                   </div>
 
                   {/* Stage card */}
-                  <div className="bg-[#F6F8FF] border border-[#E3E8F7] rounded-2xl p-6 sm:p-8 hover:border-[#2F70FE]/40 transition-colors">
+                  <div className="bg-[#F6F8FF] border border-[#E3E8F7] rounded-2xl p-6 sm:p-8 card-hover-glow">
                     <div className="mb-4">
                       <span className="text-xs font-bold uppercase tracking-wider text-[#2F70FE] mb-1 block">
                         Stage {stage.step}
@@ -76,12 +77,12 @@ export default function HowItWorksPage() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </Reveal>
               ))}
             </div>
 
             {/* Bottom summary / Call to action */}
-            <div className="mt-20 p-8 rounded-2xl bg-gradient-to-r from-[#04135B] to-[#0B1871] text-white text-center">
+            <Reveal direction="up" delay={0.2} className="mt-20 p-8 rounded-2xl bg-gradient-to-r from-[#04135B] to-[#0B1871] text-white text-center shadow-xl">
               <h3 className="text-xl sm:text-2xl font-extrabold mb-3">
                 Ready to experience human-in-the-loop AI?
               </h3>
@@ -92,7 +93,7 @@ export default function HowItWorksPage() {
                 Book a personalized demo
                 <ArrowRight size={14} />
               </Link>
-            </div>
+            </Reveal>
           </div>
         </section>
       </main>

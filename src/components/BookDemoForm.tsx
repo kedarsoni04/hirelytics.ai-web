@@ -55,10 +55,10 @@ export default function BookDemoForm() {
     setSubmissionState("loading");
     setErrorMessage(null);
 
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.hirelytics.ai";
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "";
 
     try {
-      const response = await fetch(`${apiUrl}/leads`, {
+      const response = await fetch(`${apiUrl}/api/leads`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

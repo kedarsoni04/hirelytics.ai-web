@@ -64,26 +64,56 @@ function InterviewMockup() {
           REC
         </span>
       </div>
+
+      {/* AI Question with Follow-up tag */}
       <div className="bg-white/6 rounded-xl p-3 mb-3">
-        <p className="text-white/40 text-[10px] font-semibold uppercase tracking-wider mb-1">
-          AI Question
-        </p>
+        <div className="flex items-center justify-between mb-1.5">
+          <p className="text-white/40 text-[10px] font-semibold uppercase tracking-wider">
+            AI Question
+          </p>
+          <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-[#694EFE]/40 text-[#C4B5FD] border border-[#694EFE]/50">
+            Follow-up
+          </span>
+        </div>
         <p className="text-white text-xs leading-relaxed">
-          &quot;Your resume shows experience with distributed systems. Walk me through how you&apos;d approach designing a fault-tolerant message queue for this role&apos;s scale requirements.&quot;
+          &quot;You mentioned message partitioning earlier. How would you handle hot-partition bottlenecks under peak write load?&quot;
         </p>
       </div>
+
+      {/* Rubric Evidence Line */}
+      <div className="bg-white/5 border border-white/10 rounded-xl p-2.5 mb-3">
+        <div className="flex items-center justify-between text-[10px] mb-1">
+          <span className="text-[#02B9FE] font-medium">Rubric Match · Key Points Addressed</span>
+          <span className="text-emerald-400 font-semibold text-[9px]">Evaluated</span>
+        </div>
+        <p className="text-white/80 text-[10px] leading-snug italic">
+          Evidence: &quot;I isolated write shards by tenant hash and introduced backpressure buffers to prevent queue saturation.&quot;
+        </p>
+      </div>
+
+      {/* Informational Delivery Insights */}
+      <div className="flex items-center justify-between text-[9px] text-white/50 mb-2 px-0.5">
+        <span>Pace: 142 wpm</span>
+        <span>Pauses: 2</span>
+        <span>Fillers (approx.): 1</span>
+      </div>
+
       {/* Waveform */}
-      <div className="flex items-center gap-0.5 h-8 mb-3" aria-label="Voice waveform">
+      <div className="flex items-center gap-0.5 h-7 mb-2" aria-label="Voice waveform">
         {[3, 5, 8, 6, 4, 9, 7, 5, 8, 6, 4, 7, 5, 8, 6, 3, 5, 7, 4, 6].map((h, i) => (
           <div
             key={i}
-            className="flex-1 rounded-full bg-gradient-to-t from-[#02B9FE] to-[#694EFE] opacity-80"
-            style={{ height: `${h * 8}%` }}
+            className="flex-1 rounded-full bg-gradient-to-t from-[#02B9FE] to-[#694EFE] opacity-80 animate-waveform"
+            style={{
+              height: `${h * 8}%`,
+              animationDelay: `${(i % 5) * 0.18}s`,
+              animationDuration: `${1 + (i % 3) * 0.25}s`,
+            }}
           />
         ))}
       </div>
       <div className="flex items-center gap-2 text-[10px] text-white/40">
-        <span className="text-white/60 font-medium">Transcribing…</span>
+        <span className="text-white/60 font-medium">Transcribing audio…</span>
         <span className="ml-auto">0:47</span>
       </div>
       <p className="text-[10px] text-white/30 mt-2 text-center">Sample data</p>
