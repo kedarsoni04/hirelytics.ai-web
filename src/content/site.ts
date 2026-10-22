@@ -948,6 +948,129 @@ export const LEGAL_PAGES = {
       },
     ],
   },
+  cookies: {
+    badge: "Draft – Pending Legal Review",
+    title: "Cookie Policy",
+    lastUpdated: "October 2026",
+    intro:
+      "This Cookie Policy explains how Hirelytics.ai (\"Hirelytics\", \"we\", \"us\") uses cookies and similar storage technologies when you visit our website or interact with our web applications.",
+    sections: [
+      {
+        heading: "1. What Are Cookies",
+        content:
+          "Cookies are small text files that are stored on your device when you browse websites. They help the website recognise your device, maintain active authenticated sessions, and understand how visitors navigate the platform.",
+      },
+      {
+        heading: "2. How We Use Cookies",
+        content:
+          "Hirelytics uses cookies strictly for essential operational purposes: maintaining secure authentication sessions (via encrypted JSON Web Tokens), remembering user preferences (such as theme and sidebar state), and monitoring application performance and error rates.",
+      },
+      {
+        heading: "3. No Third-Party Ad Trackers or Cross-Site Profiling",
+        content:
+          "We do not use invasive third-party advertising cookies, cross-site tracking beacons, or data broker networks. Candidate and recruiter activity on Hirelytics is never tracked for marketing or behavioral advertising purposes.",
+      },
+      {
+        heading: "4. Managing and Disabling Cookies",
+        content:
+          "Most web browsers allow you to control and block cookies through their browser settings. However, disabling essential cookies may prevent you from logging in or using authenticated recruiter workspace features.",
+      },
+      {
+        heading: "5. Policy Changes & Inquiries",
+        content:
+          "We may update this Cookie Policy from time to time to reflect operational or regulatory adjustments. If you have questions about our cookie usage, please contact us at hirelytics.ai@gmail.com.",
+      },
+    ],
+  },
+};
+
+// ─── Blog Content ────────────────────────────────────────────────────────────
+export const BLOG_CONTENT = {
+  header: {
+    badge: "Insights & Engineering",
+    title: "The Hirelytics Blog",
+    subtitle:
+      "Perspectives on responsible AI recruitment, objective evaluation rubrics, speech transcription systems, and the future of human-in-the-loop hiring.",
+  },
+  featured: {
+    id: "evidence-quotes-vs-biometrics",
+    category: "AI Ethics & Fairness",
+    title: "Why We Score Candidate Evidence Quotes Instead of Facial Expressions",
+    summary:
+      "Biometric facial recognition in video interviews introduces profound racial and neurological bias without boosting predictive validity. Here is how we engineered per-question rubrics and candidate evidence quotes instead.",
+    date: "October 18, 2026",
+    readTime: "5 min read",
+    author: "AI Research Team",
+  },
+  categories: ["All", "AI Ethics & Fairness", "Product Architecture", "Engineering", "Company"],
+  articles: [
+    {
+      id: "four-pillar-scorecard",
+      category: "Product Architecture",
+      title: "Deconstructing the Four-Pillar Scorecard: Explainable AI in Hiring",
+      summary:
+        "Black-box candidate recommendations invite legal jeopardy and erode candidate trust. We break down the math and LLM semantic alignment behind our explainable four-pillar scorecard.",
+      date: "October 10, 2026",
+      readTime: "7 min read",
+      author: "Core Engineering Team",
+    },
+    {
+      id: "whisper-speech-transcription",
+      category: "Engineering",
+      title: "Optimizing OpenAI Whisper for Low-Latency Voice Interviews",
+      summary:
+        "How we handle global accents, technical jargon, and asynchronous audio pipelines with multi-tenant data isolation and graceful error fallbacks.",
+      date: "September 28, 2026",
+      readTime: "6 min read",
+      author: "Audio Systems Team",
+    },
+    {
+      id: "indus-university-origin",
+      category: "Company",
+      title: "From Indus University Software Project to Live Production Platform",
+      summary:
+        "The technical journey of how our student engineering group project evolved into an enterprise-grade AI hiring intelligence platform.",
+      date: "September 15, 2026",
+      readTime: "4 min read",
+      author: "Founding Team",
+    },
+    {
+      id: "adaptive-follow-ups",
+      category: "AI Ethics & Fairness",
+      title: "Adaptive Follow-Ups: Probing Vague Technical Answers Fairly",
+      summary:
+        "Why rigid static question banks penalize communicative candidates and how strictly controlled adaptive follow-up prompts surface true engineering competency.",
+      date: "August 22, 2026",
+      readTime: "5 min read",
+      author: "AI & ML Pipeline Team",
+    },
+    {
+      id: "tenant-isolated-security",
+      category: "Engineering",
+      title: "Data Sovereignty & Tenant Isolation in Modern Recruitment SaaS",
+      summary:
+        "A deep dive into our architectural approach to partition candidate CVs, interview audio streams, and evaluation scorecards across zero-trust enterprise tenants.",
+      date: "August 04, 2026",
+      readTime: "8 min read",
+      author: "Security Team",
+    },
+    {
+      id: "human-in-the-loop-manifesto",
+      category: "Product Architecture",
+      title: "Why AI Should Never Autonomously Reject or Advance Candidates",
+      summary:
+        "The core principle behind Hirelytics: AI provides rich diagnostic evidence, but the human recruiter or hiring manager retains 100% of final decision authority.",
+      date: "July 19, 2026",
+      readTime: "5 min read",
+      author: "Product Team",
+    },
+  ],
+  newsletter: {
+    title: "Stay ahead in AI recruitment technology",
+    subtitle: "Get our latest research papers, product updates, and recruitment benchmarks delivered directly to your inbox.",
+    cta: "Subscribe",
+    disclaimer: "No spam, ever. Unsubscribe with a single click at any time.",
+  },
 };
 
 // ─── Careers Page ─────────────────────────────────────────────────────────────

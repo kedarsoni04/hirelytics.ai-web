@@ -80,12 +80,12 @@ export default function Navbar() {
 
         {/* Desktop CTAs */}
         <div className="hidden md:flex items-center gap-3">
-          <a
-            href={SITE.appUrl}
+          <Link
+            href="/login"
             className="text-sm font-semibold text-white/80 hover:text-white transition-colors duration-150 px-2"
           >
             Log in
-          </a>
+          </Link>
           <Link href={SITE.bookDemoUrl} className="btn-gradient text-sm">
             Book a demo
             <ArrowRight size={14} />
@@ -135,12 +135,13 @@ export default function Navbar() {
             );
           })}
           <hr className="border-white/10 my-1" />
-          <a
-            href={SITE.appUrl}
+          <Link
+            href="/login"
+            onClick={() => setOpen(false)}
             className="py-2.5 px-3 rounded-xl text-white/80 hover:text-white font-semibold text-sm transition-colors"
           >
             Log in
-          </a>
+          </Link>
           <Link
             href={SITE.bookDemoUrl}
             onClick={() => setOpen(false)}
