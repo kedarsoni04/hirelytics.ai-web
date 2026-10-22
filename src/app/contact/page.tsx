@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Mail,
   Briefcase,
@@ -13,6 +14,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import Reveal from "@/components/Reveal";
+import ContactForm from "@/components/ContactForm";
 import { CONTACT_CONTENT, SITE } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -145,25 +147,9 @@ export default function ContactPage() {
         >
           <div className="container-xl max-w-4xl">
             <div className="grid md:grid-cols-2 gap-10 items-center">
-              {/* Email CTA */}
-              <Reveal direction="left">
-                <span className="inline-block text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-white border border-[#E3E8F7] text-[#2F70FE] mb-4">
-                  Quick Contact
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B1250] mb-4">
-                  Just want to say hello?
-                </h2>
-                <p className="text-[#4B5578] text-sm leading-relaxed mb-6">
-                  Drop us an email and we&apos;ll get back to you within one business
-                  day. No forms, no friction.
-                </p>
-                <a
-                  href="mailto:hirelytics.ai@gmail.com"
-                  className="btn-gradient text-sm inline-flex"
-                >
-                  hirelytics.ai@gmail.com
-                  <Mail size={14} />
-                </a>
+              {/* Contact Form */}
+              <Reveal direction="left" className="md:col-span-1">
+                <ContactForm />
               </Reveal>
 
               {/* Social links */}
@@ -179,26 +165,46 @@ export default function ContactPage() {
                   and early-access updates.
                 </p>
                 <div className="flex flex-col gap-3">
-                  {social.map((s) => (
-                    <a
-                      key={s.label}
-                      href={s.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-between px-4 py-3 rounded-xl bg-white border border-[#E3E8F7] hover:border-[#2F70FE]/50 hover:bg-[#F6F8FF] transition-all duration-200 group"
-                    >
-                      <div>
-                        <div className="text-sm font-bold text-[#0B1250]">
-                          {s.label}
+                  {social.map((s) => {
+                    const isMail = s.href.startsWith("mailto:");
+                    return (
+                      <a
+                        key={s.label}
+                        href={s.href}
+                        target={isMail ? undefined : "_blank"}
+                        rel={isMail ? undefined : "noopener noreferrer"}
+                        className="flex items-center justify-between px-4 py-3 rounded-xl bg-white border border-[#E3E8F7] hover:border-[#2F70FE]/50 hover:bg-[#F6F8FF] transition-all duration-200 group"
+                      >
+                        <div className="flex items-center gap-3">
+                          {s.label === "LinkedIn" ? (
+                            <div className="w-8 h-8 rounded-lg bg-[#0077B5]/10 flex items-center justify-center shrink-0">
+                              <Image
+                                src="/brand/LI-In-Bug.png"
+                                alt="LinkedIn"
+                                width={18}
+                                height={18}
+                                className="w-4 h-4 object-contain rounded-[2px]"
+                              />
+                            </div>
+                          ) : (
+                            <div className="w-8 h-8 rounded-lg bg-[#2F70FE]/10 text-[#2F70FE] flex items-center justify-center shrink-0">
+                              <Mail size={16} />
+                            </div>
+                          )}
+                          <div>
+                            <div className="text-sm font-bold text-[#0B1250]">
+                              {s.label}
+                            </div>
+                            <div className="text-xs text-[#4B5578]">{s.handle}</div>
+                          </div>
                         </div>
-                        <div className="text-xs text-[#4B5578]">{s.handle}</div>
-                      </div>
-                      <ExternalLink
-                        size={15}
-                        className="text-[#4B5578] group-hover:text-[#2F70FE] transition-colors"
-                      />
-                    </a>
-                  ))}
+                        <ExternalLink
+                          size={15}
+                          className="text-[#4B5578] group-hover:text-[#2F70FE] transition-colors"
+                        />
+                      </a>
+                    );
+                  })}
                 </div>
               </Reveal>
             </div>

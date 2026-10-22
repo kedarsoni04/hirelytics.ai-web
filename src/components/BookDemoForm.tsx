@@ -55,25 +55,43 @@ export default function BookDemoForm() {
     setSubmissionState("loading");
     setErrorMessage(null);
 
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "";
+    const payload = {
+      name: data.name,
+      work_email: data.workEmail,
+      company: data.company,
+      role: data.role,
+      company_size: data.companySize,
+      hires_per_year: data.hiresPerYear,
+      message: data.message || "",
+      hp_website: data.hp_website || "",
+    };
 
     try {
-      const response = await fetch(`${apiUrl}/api/leads`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: data.name,
-          work_email: data.workEmail,
-          company: data.company,
-          role: data.role,
-          company_size: data.companySize,
-          hires_per_year: data.hiresPerYear,
-          message: data.message || "",
-          hp_website: data.hp_website || "",
-        }),
-      });
+      let response: Response;
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL?.trim();
+
+      if (apiUrl) {
+        try {
+          response = await fetch(`${apiUrl}/api/leads`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+        } catch {
+          // If remote external API is offline, fall back to local serverless route
+          response = await fetch("/api/leads", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+        }
+      } else {
+        response = await fetch("/api/leads", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+      }
 
       if (!response.ok) {
         throw new Error(`Server returned status ${response.status}`);

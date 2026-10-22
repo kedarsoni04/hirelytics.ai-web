@@ -1,11 +1,19 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ExternalLink } from "lucide-react";
+import { Mail } from "lucide-react";
 import { FOOTER } from "@/content/site";
 
 const iconMap: Record<string, React.ReactNode> = {
-  Linkedin: <ExternalLink size={16} />,
-  Twitter: <ExternalLink size={16} />,
+  Linkedin: (
+    <Image
+      src="/brand/LI-In-Bug.png"
+      alt="LinkedIn"
+      width={18}
+      height={18}
+      className="w-4 h-4 object-contain rounded-[2px]"
+    />
+  ),
+  Mail: <Mail size={16} className="text-white/80" />,
 };
 
 export default function Footer() {

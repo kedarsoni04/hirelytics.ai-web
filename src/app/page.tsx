@@ -53,7 +53,6 @@ const organizationJsonLd = {
     "AI-powered hiring intelligence platform that screens resumes, conducts job-specific voice interviews, and delivers explainable candidate scorecards.",
   sameAs: [
     "https://www.linkedin.com/company/hirelytics-ai",
-    "https://twitter.com/hireleticsai",
   ],
 };
 

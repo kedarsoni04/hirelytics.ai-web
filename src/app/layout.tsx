@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import PageTransition from "@/components/PageTransition";
+import AuthProvider from "@/components/AuthProvider";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -46,7 +47,6 @@ export const metadata: Metadata = {
     description:
       "AI-powered resume screening, voice interviews, and explainable scorecards for companies that hire seriously.",
     images: ["/brand/og-image.png"],
-    creator: "@hireleticsai",
   },
   icons: {
     icon: [
@@ -85,7 +85,9 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col antialiased">
-        <PageTransition>{children}</PageTransition>
+        <AuthProvider>
+          <PageTransition>{children}</PageTransition>
+        </AuthProvider>
       </body>
     </html>
   );

@@ -315,7 +315,7 @@ export const FOOTER = {
   ],
   social: [
     { label: "LinkedIn", href: "https://www.linkedin.com/company/hirelytics-ai", icon: "Linkedin" },
-    { label: "Twitter / X", href: "https://twitter.com/hireleticsai", icon: "Twitter" },
+    { label: "Email", href: "mailto:hirelytics.ai@gmail.com", icon: "Mail" },
   ],
   copyright: `© ${new Date().getFullYear()} Hirelytics.ai. All rights reserved.`,
 };
@@ -1219,9 +1219,9 @@ export const CONTACT_CONTENT = {
       href: "https://www.linkedin.com/company/hirelytics-ai",
     },
     {
-      label: "Twitter / X",
-      handle: "@hireleticsai",
-      href: "https://twitter.com/hireleticsai",
+      label: "Direct Email",
+      handle: "hirelytics.ai@gmail.com",
+      href: "mailto:hirelytics.ai@gmail.com",
     },
   ],
   faq: [

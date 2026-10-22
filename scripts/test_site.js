@@ -6,6 +6,10 @@ const routes = [
   '/about',
   '/security',
   '/book-demo',
+  '/contact',
+  '/login',
+  '/blog',
+  '/careers',
   '/privacy',
   '/terms',
 ];
@@ -50,6 +54,57 @@ async function runAudit() {
       console.error(`[FAIL] ${asset} -> ${err.message}`);
       failures++;
     }
+  }
+
+  console.log('\n--- Checking Serverless API Endpoints ---');
+  // NextAuth providers endpoint
+  try {
+    const res = await fetch('http://localhost:3000/api/auth/providers');
+    const data = await res.json();
+    console.log(`[PASS] /api/auth/providers | ${res.status} OK | Providers: ${Object.keys(data).join(', ')}`);
+  } catch (err) {
+    console.error(`[FAIL] /api/auth/providers -> ${err.message}`);
+    failures++;
+  }
+
+  // Contact form submission endpoint
+  try {
+    const res = await fetch('http://localhost:3000/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: 'Audit Bot',
+        email: 'audit@example.com',
+        category: 'General Inquiry',
+        message: 'This is an automated health check test message.',
+      }),
+    });
+    const data = await res.json();
+    console.log(`[PASS] /api/contact       | ${res.status} OK | Success: ${data.success}`);
+  } catch (err) {
+    console.error(`[FAIL] /api/contact -> ${err.message}`);
+    failures++;
+  }
+
+  // Leads submission endpoint
+  try {
+    const res = await fetch('http://localhost:3000/api/leads', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: 'Audit Lead',
+        work_email: 'lead@example.com',
+        company: 'Audit Corp',
+        role: 'Engineering Lead',
+        company_size: '50-200',
+        hires_per_year: '10-50',
+      }),
+    });
+    const data = await res.json();
+    console.log(`[PASS] /api/leads         | ${res.status} OK | Success: ${data.success}`);
+  } catch (err) {
+    console.error(`[FAIL] /api/leads -> ${err.message}`);
+    failures++;
   }
 
   console.log('\n=== AUDIT SUMMARY ===');

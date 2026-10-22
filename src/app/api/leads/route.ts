@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+import { sendServerlessNotification } from "@/lib/serverless-notifications";
 
 const leadSchema = z.object({
   name: z.string().min(2, "Full name is required"),
@@ -33,15 +34,19 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // In production, forward to CRM, email service (e.g. Resend, Sendgrid) or database
-    console.log("[Lead Captured]:", {
-      name: validatedData.data.name,
-      email: validatedData.data.work_email,
-      company: validatedData.data.company,
-      role: validatedData.data.role,
-      company_size: validatedData.data.company_size,
-      hires_per_year: validatedData.data.hires_per_year,
-      timestamp: new Date().toISOString(),
+    // Serverless logging & optional email notification
+    await sendServerlessNotification({
+      type: "Lead / Demo Request",
+      subject: `Demo Request from ${validatedData.data.name} (${validatedData.data.company})`,
+      data: {
+        Name: validatedData.data.name,
+        "Work Email": validatedData.data.work_email,
+        Company: validatedData.data.company,
+        Role: validatedData.data.role,
+        "Company Size": validatedData.data.company_size,
+        "Expected Hires / Year": validatedData.data.hires_per_year,
+        Message: validatedData.data.message || "None",
+      },
     });
 
     return NextResponse.json({
